@@ -6,6 +6,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
+import json
 import datetime as dt
 
 from flask import Flask, jsonify
@@ -49,10 +50,10 @@ precips_dict = dict(dates_prcps)
 
 ##### Stations Query #####
 unique_stations = session.query(station.station.distinct()).all()
-stations_list = [s[0] for s in unique_stations]
-stations = {'Stations': stations_list}
+stations = [{'id': s[0]} for s in unique_stations]
 
 ##### TOBS Query #####
+
 
 ##### Start Query #####
 
