@@ -48,6 +48,12 @@ dates_prcps = session.query(measurement).\
 precips_dict = dict(dates_prcps)
 
 ##### Stations Query #####
+unique_stations = session.query(station.station.distinct()).all()
+stations = [str(station[0]) for station in unique_stations]
+#print(type(stations))
+#print(stations)
+for station in stations:
+    print(type(station))
 
 ##### TOBS Query #####
 
@@ -85,7 +91,7 @@ def precipitation():
 
 @app.route("/api/v1.0/stations")
 def stations():
-    return False
+    return jsonify(stations)
 
 @app.route("/api/v1.0/tobs")
 def tobs():
