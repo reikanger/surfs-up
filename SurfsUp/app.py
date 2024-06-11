@@ -49,11 +49,8 @@ precips_dict = dict(dates_prcps)
 
 ##### Stations Query #####
 unique_stations = session.query(station.station.distinct()).all()
-stations = [str(station[0]) for station in unique_stations]
-#print(type(stations))
-#print(stations)
-for station in stations:
-    print(type(station))
+stations_list = [s[0] for s in unique_stations]
+stations = {'Stations': stations_list}
 
 ##### TOBS Query #####
 
